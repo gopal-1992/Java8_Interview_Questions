@@ -25,13 +25,16 @@ public class FindDuplicateInJava8 {
 		
 		  List<String> list = Arrays.asList("Gopal", "Santosh", "Laxmi", "Gopal");
 		  
-		  List<String> listNames = list.stream().map(name ->name).collect(Collectors.toList()); 
+		 // List<String> listNames = list.stream().map(name ->name).collect(Collectors.toList()); 
 		  Set<String> UniqueNames = new LinkedHashSet<>(); 
-		  Set<String> DuplicateNames = listNames.stream().filter(name -> !UniqueNames.add(name))
+		  Set<String> DuplicateNames = list.stream().filter(name -> !UniqueNames.add(name))
 		  .collect(Collectors.toSet()); 
 		  System.out.println("UniqueName :" +UniqueNames);
 		  
 		  System.out.println("DuplicateNames :" + DuplicateNames);
+		  
+		  List<String> duplicate = list.stream().distinct().collect(Collectors.toList());
+		  System.out.println("by using distrinct () "+duplicate);
 		 
 	}
 

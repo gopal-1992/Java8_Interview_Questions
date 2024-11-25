@@ -11,7 +11,7 @@ public class CubeOperationINJava8 {
 	       List<Integer> integerList = Arrays.asList(4,5,6,7,1,2,3);
 	       integerList.stream()
 	                  .map(i -> i*i*i)
-	                  .filter(i -> i>50)
+	                  .filter(i -> i>1)
 	                  .forEach(System.out::println);
 	    }
 }

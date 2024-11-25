@@ -10,25 +10,18 @@ import java.util.stream.Collectors;
  */
 public class FirstNonRepeated {
 	public static void main(String args[]) {
-		String input = "Java articles are Awesome";
-
-		Character result = input.chars() // Stream of String
-				.mapToObj(s -> Character.toLowerCase(Character.valueOf((char) s))) // First convert to Character object
-																					// and then to lowercase
-				.collect(Collectors.groupingBy(Function.identity(), LinkedHashMap::new, Collectors.counting())) // Store
-																												// the
-																												// chars
-																												// in
-																												// map
-																												// with
-																												// count
-				.entrySet().stream().filter(entry -> entry.getValue() == 1L).map(entry -> entry.getKey()).findFirst()
-				.get();
-		System.out.println(result);
-
-		/* or can also try using */
-
-		input.chars().mapToObj(c -> (char) c).filter(ch -> input.indexOf(ch) == input.lastIndexOf(ch)).findFirst()
-				.orElse(null);
+		System.out.println(logic("gogokyyll"));
 	}
+	
+	private static Character logic(String input) {  
+        Character result =  input.chars()           // IntStream
+             .mapToObj(i -> Character.toLowerCase(Character.valueOf((char) i)))  // convert to lowercase & then to Character object Stream
+             .collect(Collectors.groupingBy(Function.identity(), LinkedHashMap::new, Collectors.counting())) // store in a LinkedHashMap with the count
+             .entrySet().stream()                       // EntrySet stream
+             .filter(entry -> entry.getValue() == 1L)   // extracts characters with a count of 1
+             .map(entry -> entry.getKey())              // get the keys of EntrySet
+             .findFirst().get();                        // get the first entry from the keys
+        
+         return result;    
+  }
 }

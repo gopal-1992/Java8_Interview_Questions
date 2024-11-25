@@ -18,7 +18,7 @@ public class FindMaxElement {
 		
 		//for get the small number
 		int[] arr = {25, 98, 301, 32, 15};
-		int maxdata = Arrays.stream(arr ).boxed().max(Comparator.reverseOrder()).get();
+		int maxdata = Arrays.stream(arr ).boxed().max(Comparator.reverseOrder()).get(); 
 
 		System.out.println(maxdata);
 	}
